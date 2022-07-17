@@ -1,0 +1,29 @@
+{
+  "name": "jobscrape-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tom0901/JobScrape-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tom0901/JobScrape-/issues"
+  },
+  "homepage": "https://github.com/Tom0901/JobScrape-#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "console": "^0.7.2",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16",
+    "puppeteer": "^14.2.1",
+    "typescript": "^4.7.2"
+  }
+}
