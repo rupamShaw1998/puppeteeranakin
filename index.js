@@ -1,30 +1,27 @@
-const express = require("express");
-const app = express();
-const ip = process.env.IP || '0.0.0.0';
-const port = process.env.PORT || 5500;
-const bodyParser = require("body-parser");
-const scrapers = require("./scrapers");
+const express=require("express")
+const start=require("./scrapers")
+var cors = require('cors')
+var app = express()
+ 
+app.use(cors())
+app.use(express.json())
 
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+app.get("/",async(req,res)=>{
+      try {
+          let data=await start()
+        
+          res.status(200).send(data)
+      } 
+      catch (error) {
+          res.send(error)
+      }
+})
 
-app.use(express.json());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*"); // disabled for security on local
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
-
-app.listen(port, () =>
-  console.log(`JobScrape listening at http://localhost:${port}`)
-);
-
-app.post("/something", async (req, res) => {
-  console.log("something endpoint", req.body);
-  const jobData = await scrapers.scrapeChannel(req.body.customURL, req.body.techInput);
-  res.send(jobData);
-});
+app.listen(5000,async()=>{
+    try {
+        console.log("listening on port... 5000");
+    } 
+    catch (error) {
+        console.log(error) 
+    }
+})
